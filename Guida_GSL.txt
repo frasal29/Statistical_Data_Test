@@ -1,0 +1,41 @@
+Questi sono i passi da seguire per poter installare la libreria GSL su Windows, per poter compilare tramite Prompt dei Comandi(CMD):
+
+1. Installare il compilatore MinGW dal sito: https://sourceforge.net/projects/mingw/files/latest/download
+
+2. Aprire il file: mingw-get-setup andare su installa nel percorso C:\MinGW e selezionare tutte le spunte per l'installazione basica.
+
+3. Ora bisogna aggiungere nelle variabili d'ambiente del sistema, nella sezione path, il percorso C:\MinGW\bin ---> ora si possono compilare i file nel prompt dei comandi attraverso la dicitura gcc prova.c oppure g++ prova.cpp, a seconda se si tratta di un file c o cpp
+
+4. Scaricare dal sito: https://www.gnu.org/software/gsl/ l'ultima versione di gsl che dovrebbe essere la 2.7
+
+5. Scompattare il file .tar e spostare la cartella gsl-2.7.1 nella cartella di destinazione: C:\MinGW\msys\1.0
+
+6. Andare nella cartella: C:\MinGW\msys\1.0 e lanciare il file msys.bat
+
+7. Si apre una finestra di comando in cui digitiamo change directory (cd) per andare nella cartella che si trova nel percorso: C:\MinGW\msys\1.0\gsl-2.7.1
+
+8. Ora digitiamo questi tre comandi uno alla volta: ./configure       --> questo processo potrebbe durare un po' di minuti
+                                                    make
+                                                    make install
+
+9. Ora non resta che aggiungere due nuove variabili d'ambiente del sistema, sempre nella sezione path, 1. percorso C:\MinGW\msys\1.0\local\bin
+													                         2. percorso C:\MinGW\msys\1.0\bin
+
+10. Esempio di file.c :
+
+#include <gsl/gsl_cdf.h> // gsl_cdf contiene la funzione gsl_cdf_chisq_Q per il calcolo del p-value
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    double chiv = 4.36;
+    double df = 2;
+    double y = gsl_cdf_chisq_Q(chiv, df); 
+    printf("Con un chiv pari a: %lf e un df pari a: %lf ottengo un\n", chiv, df);
+    printf("P-value e': %lf", y);
+    return 0;
+}
+
+11. Come compilare: gcc file.c -o file -I"C:/MinGW/msys/1.0/local/include" -L"C:/MinGW/msys/1.0/local/lib" -lgsl -lgslcblas -lm
+
+12. A questo punto posso lanciare file.exe e ottenere l'output richiesto

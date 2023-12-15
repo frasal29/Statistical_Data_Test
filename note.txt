@@ -1,0 +1,33 @@
+
+PER LANCIARLO
+
+rome_test_analyzer/bin$ ./rome-test-analyzer ../data/Fumatori.csv ../data/Fumatorisupporto.csv 0
+(Maschio+Si)/Maschio=10.00%
+(Maschio+No)/Maschio=90.00%
+(Donna+Si)/Donna=0.00%
+(Donna+No)/Donna=100.00%
+Prob(Sesso=>Fumatore) = 47.32%
+
+patrigna@tittolo:~/Dropbox/develop/analisi-dati-di-test/rome_test_analyzer/bin$ cat Fumatori.csv
+Nome;Cognome;Sesso;Fumatore
+Mario;Rossi;Maschio;Si
+Gianni;D'angelo;Maschio;No
+Rosanna;Neri;Donna;No
+....
+
+
+patrigna@tittolo:~/Dropbox/develop/analisi-dati-di-test/rome_test_analyzer/bin$ cat Fumatorisupporto.csv 
+
+WUSI;WUSI;WRPI;WRPO
+
+--------------
+Dove 
+W=stringhe N=numero
+U=trascurabile R=rilevante 
+S=secondario P=principale 
+I=input O=output 
+
+PER COMPILARE
+=============
+Da una shell dei comandi esguire "make" sotto la directory principale
+
